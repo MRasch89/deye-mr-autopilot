@@ -38,19 +38,18 @@ async def test_setup_creates_device_and_entities(hass, mock_config_entry) -> Non
     assert device.manufacturer == MANUFACTURER
     assert device.model == MODEL
 
-    states = hass.states.async_all()
-    by_unique_suffix = {
-        state.entity_id: state.state
-        for state in states
-        if state.entity_id.startswith(("sensor.", "select.", "switch."))
-    }
-    assert any(entity_id.endswith("_status") for entity_id in by_unique_suffix)
-    assert any(entity_id.endswith("_safety_status") for entity_id in by_unique_suffix)
-    assert any(entity_id.endswith("_autopilot_mode") for entity_id in by_unique_suffix)
-    assert any(entity_id.endswith("_strategy") for entity_id in by_unique_suffix)
-    assert any(entity_id.endswith("_control_armed") for entity_id in by_unique_suffix)
-
     entity_registry = er.async_get(hass)
+    for platform, key in (
+        ("sensor", "status"),
+        ("sensor", "safety_status"),
+        ("select", "operating_mode"),
+        ("select", "strategy"),
+        ("switch", "control_armed"),
+    ):
+        assert entity_registry.async_get_entity_id(
+            platform, DOMAIN, f"{mock_config_entry.entry_id}_{key}"
+        )
+
     pv_power_id = entity_registry.async_get_entity_id(
         "sensor", DOMAIN, f"{mock_config_entry.entry_id}_pv_power"
     )

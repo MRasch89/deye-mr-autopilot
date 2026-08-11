@@ -88,16 +88,16 @@
   "entity": {
     "sensor": {
       "status": {"name": "Status"},
-      "safety_status": {"name": "Safety status"},
-      "telemetry_quality": {"name": "Telemetry quality"},
-      "source_age": {"name": "Source data age"},
-      "pv_power": {"name": "PV power"},
-      "load_power": {"name": "Load power"},
-      "grid_power": {"name": "Grid power"},
-      "battery_soc": {"name": "Battery state of charge"},
-      "battery_power": {"name": "Battery power"},
-      "battery_temperature": {"name": "Battery temperature"},
-      "inverter_temperature": {"name": "Inverter temperature"},
+      "safety_status": {"name": "Safety"},
+      "telemetry_quality": {"name": "Data quality"},
+      "source_age": {"name": "Data age"},
+      "pv_power": {"name": "PV"},
+      "load_power": {"name": "Home"},
+      "grid_power": {"name": "Grid"},
+      "battery_soc": {"name": "SOC"},
+      "battery_power": {"name": "Battery"},
+      "battery_temperature": {"name": "Battery temp."},
+      "inverter_temperature": {"name": "Inverter temp."},
       "today_production": {"name": "Production today"},
       "today_load_consumption": {"name": "Load consumption today"},
       "today_grid_import": {"name": "Grid import today"},
@@ -107,7 +107,7 @@
     },
     "select": {
       "autopilot_mode": {
-        "name": "Autopilot mode",
+        "name": "Mode",
         "state": {"off": "Off", "monitor": "Monitor", "recommend": "Recommend", "shadow": "Shadow", "autopilot": "Autopilot"}
       },
       "strategy": {
@@ -115,7 +115,7 @@
         "state": {"safe": "Safe", "balanced": "Balanced", "self_consumption": "Self-consumption", "profit": "Profit", "backup": "Backup", "custom": "Custom"}
       }
     },
-    "switch": {"control_armed": {"name": "Control armed"}}
+    "switch": {"control_armed": {"name": "Arming"}}
   },
   "issues": {
     "control_blocked": {"title": "Autopilot control was blocked", "description": "Physical control for config entry {entry_id} was blocked by the safety system."}
