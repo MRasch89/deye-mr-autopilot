@@ -71,6 +71,15 @@ def _number_selector(
 
 def _installation_schema(defaults: dict[str, Any]) -> vol.Schema:
     """Build the installation schema with supplied defaults."""
+    usable_capacity = defaults.get(CONF_BATTERY_USABLE_CAPACITY_KWH)
+    usable_capacity_field = (
+        vol.Optional(
+            CONF_BATTERY_USABLE_CAPACITY_KWH,
+            default=usable_capacity,
+        )
+        if usable_capacity not in (None, "")
+        else vol.Optional(CONF_BATTERY_USABLE_CAPACITY_KWH)
+    )
     return vol.Schema(
         {
             vol.Required(
@@ -101,10 +110,7 @@ def _installation_schema(defaults: dict[str, Any]) -> vol.Schema:
                     CONF_BATTERY_CAPACITY_KWH, DEFAULT_BATTERY_CAPACITY_KWH
                 ),
             ): _number_selector(0.1, 1000, 0.1, "kWh"),
-            vol.Optional(
-                CONF_BATTERY_USABLE_CAPACITY_KWH,
-                default=defaults.get(CONF_BATTERY_USABLE_CAPACITY_KWH),
-            ): _number_selector(0.1, 1000, 0.1, "kWh"),
+            usable_capacity_field: _number_selector(0.1, 1000, 0.1, "kWh"),
             vol.Optional(
                 CONF_BATTERY_CHEMISTRY,
                 default=defaults.get(CONF_BATTERY_CHEMISTRY, ""),

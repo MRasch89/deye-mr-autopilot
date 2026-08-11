@@ -3,6 +3,7 @@
 from homeassistant import config_entries, data_entry_flow
 
 from custom_components.deye_mr_autopilot.const import (
+    CONF_BATTERY_USABLE_CAPACITY_KWH,
     CONF_DATA_SOURCE_MODE,
     CONF_EMERGENCY_SOC,
     CONF_MAXIMUM_SOC,
@@ -46,6 +47,22 @@ async def test_user_flow_creates_entry(hass, installation_data) -> None:
     assert result["title"] == "Home Energy System"
     assert result["data"][CONF_MINIMUM_SOC] == 30
     assert "soc_limits" not in result["data"]
+
+
+async def test_user_flow_allows_empty_usable_battery_capacity(
+    hass, installation_data
+) -> None:
+    installation_data.pop(CONF_BATTERY_USABLE_CAPACITY_KWH)
+    result = await hass.config_entries.flow.async_init(
+        DOMAIN, context={"source": config_entries.SOURCE_USER}
+    )
+
+    result = await hass.config_entries.flow.async_configure(
+        result["flow_id"], _flow_input(installation_data)
+    )
+
+    assert result["type"] is data_entry_flow.FlowResultType.CREATE_ENTRY
+    assert CONF_BATTERY_USABLE_CAPACITY_KWH not in result["data"]
 
 
 async def test_user_flow_rejects_inconsistent_limits(hass, installation_data) -> None:

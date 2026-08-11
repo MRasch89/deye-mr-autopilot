@@ -9,7 +9,7 @@ DOMAIN = "deye_mr_autopilot"
 NAME = "Deye MR Autopilot"
 MANUFACTURER = "MR"
 MODEL = "Energy Management Autopilot"
-VERSION = "0.1.0-alpha.1"
+VERSION = "0.1.0-alpha.2"
 
 PLATFORMS: tuple[Platform, ...] = (
     Platform.SENSOR,
