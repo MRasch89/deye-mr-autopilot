@@ -10,6 +10,13 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 
 from .const import VERSION
+from .telemetry import (
+    BATTERY_ALARM_ENTITY,
+    BATTERY_FAULT_ENTITY,
+    BATTERY_STATE_ENTITY,
+    CONNECTION_ENTITY,
+    SOURCE_SPECS,
+)
 
 TO_REDACT = {
     "logger_ip",
@@ -33,6 +40,13 @@ async def async_get_config_entry_diagnostics(
         "strategy": runtime.strategy.value,
         "control_armed": runtime.control_armed,
         "control_adapter": type(runtime.control).__name__,
+        "telemetry_sources": {
+            **{key: spec.entity_id for key, spec in SOURCE_SPECS.items()},
+            "connection": CONNECTION_ENTITY,
+            "battery_alarm": BATTERY_ALARM_ENTITY,
+            "battery_fault": BATTERY_FAULT_ENTITY,
+            "battery_state": BATTERY_STATE_ENTITY,
+        },
         "coordinator": {
             "last_update_success": runtime.coordinator.last_update_success,
             "data": asdict(runtime.coordinator.data),

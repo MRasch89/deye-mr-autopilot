@@ -84,7 +84,25 @@
     "data_source_mode": {"options": {"home_assistant": "Encje Home Assistant", "direct_solarman": "Bezpośredni Solarman", "hybrid": "Hybrydowy"}}
   },
   "entity": {
-    "sensor": {"status": {"name": "Stan"}, "safety_status": {"name": "Stan bezpieczeństwa"}},
+    "sensor": {
+      "status": {"name": "Stan"},
+      "safety_status": {"name": "Stan bezpieczeństwa"},
+      "telemetry_quality": {"name": "Jakość telemetrii"},
+      "source_age": {"name": "Wiek danych źródłowych"},
+      "pv_power": {"name": "Moc PV"},
+      "load_power": {"name": "Moc odbiorów"},
+      "grid_power": {"name": "Moc sieci"},
+      "battery_soc": {"name": "Poziom baterii"},
+      "battery_power": {"name": "Moc baterii"},
+      "battery_temperature": {"name": "Temperatura baterii"},
+      "inverter_temperature": {"name": "Temperatura falownika"},
+      "today_production": {"name": "Produkcja dzisiaj"},
+      "today_load_consumption": {"name": "Zużycie dzisiaj"},
+      "today_grid_import": {"name": "Import z sieci dzisiaj"},
+      "today_grid_export": {"name": "Eksport do sieci dzisiaj"},
+      "today_battery_charge": {"name": "Ładowanie baterii dzisiaj"},
+      "today_battery_discharge": {"name": "Rozładowanie baterii dzisiaj"}
+    },
     "select": {
       "autopilot_mode": {
         "name": "Tryb Autopilota",

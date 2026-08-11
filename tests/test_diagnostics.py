@@ -11,4 +11,8 @@ async def test_diagnostics_are_safe(hass, mock_config_entry) -> None:
     diagnostics = await async_get_config_entry_diagnostics(hass, mock_config_entry)
     assert diagnostics["control_armed"] is False
     assert diagnostics["control_adapter"] == "MockControlAdapter"
+    assert (
+        diagnostics["telemetry_sources"]["pv_power_w"]
+        == "sensor.deye_inverter_pv_power"
+    )
     assert "password" not in str(diagnostics)

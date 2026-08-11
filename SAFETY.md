@@ -2,7 +2,7 @@
 
 Safety is a hard architectural boundary, not an optimizer preference.
 
-## Phase 1 guarantees
+## Phase 2 read-only guarantees
 
 - Physical control is not implemented or armed.
 - `manifest.json` has no Solarman or Modbus dependency.
@@ -13,6 +13,9 @@ Safety is a hard architectural boundary, not an optimizer preference.
 - There is no public raw-register API or Home Assistant action.
 - Selecting AUTOPILOT cannot enable a write path.
 - Restarting Home Assistant leaves control disarmed.
+- The telemetry collector only calls `hass.states.get`; it never calls a service or
+  invokes writable entities from the source integration.
+- Source `number`, `select`, `switch`, `button`, and `datetime` entities are excluded.
 
 ## Required future execution sequence
 
@@ -42,4 +45,3 @@ before hardware testing. Addresses are never inferred from another Deye family.
 Do not publish inverter credentials, serial numbers, IP addresses, diagnostic exports,
 or register dumps containing private installation information. Use the security policy
 for vulnerabilities and the issue tracker for non-sensitive safety defects.
-

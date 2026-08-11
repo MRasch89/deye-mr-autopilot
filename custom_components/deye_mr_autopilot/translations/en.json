@@ -86,7 +86,25 @@
     "data_source_mode": {"options": {"home_assistant": "Home Assistant entities", "direct_solarman": "Direct Solarman", "hybrid": "Hybrid"}}
   },
   "entity": {
-    "sensor": {"status": {"name": "Status"}, "safety_status": {"name": "Safety status"}},
+    "sensor": {
+      "status": {"name": "Status"},
+      "safety_status": {"name": "Safety status"},
+      "telemetry_quality": {"name": "Telemetry quality"},
+      "source_age": {"name": "Source data age"},
+      "pv_power": {"name": "PV power"},
+      "load_power": {"name": "Load power"},
+      "grid_power": {"name": "Grid power"},
+      "battery_soc": {"name": "Battery state of charge"},
+      "battery_power": {"name": "Battery power"},
+      "battery_temperature": {"name": "Battery temperature"},
+      "inverter_temperature": {"name": "Inverter temperature"},
+      "today_production": {"name": "Production today"},
+      "today_load_consumption": {"name": "Load consumption today"},
+      "today_grid_import": {"name": "Grid import today"},
+      "today_grid_export": {"name": "Grid export today"},
+      "today_battery_charge": {"name": "Battery charge today"},
+      "today_battery_discharge": {"name": "Battery discharge today"}
+    },
     "select": {
       "autopilot_mode": {
         "name": "Autopilot mode",

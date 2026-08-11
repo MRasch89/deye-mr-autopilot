@@ -103,6 +103,19 @@ SafetyEngine rejects all commands. The only active adapter is MockControlAdapter
 only when explicitly instantiated and installed. The integration manifest has no
 runtime requirements, so missing optional modules cannot prevent Home Assistant setup.
 
+## Phase 2 read-only runtime
+
+`HomeAssistantTelemetryCollector` reads only Home Assistant's in-memory state machine.
+It never calls an entity service, device API, Solarman library, or Modbus transport.
+The first preset maps the observed `sensor.deye_inverter_*` entities for PV, load,
+grid, aggregate battery, temperatures, and daily energy counters. Aggregate connection,
+battery alarm, and battery fault binary sensors are also observed.
+
+Every snapshot is immutable and records source age plus missing, unavailable, and
+invalid-unit entity identifiers. Five essential measurements determine `valid`,
+`partial`, `stale`, or `invalid` quality. Recorder stores normalized entity history;
+the integration does not create another database or unbounded internal history.
+
 ## Configuration ownership
 
 Config-entry data contains installation facts and hard safety limits. Options contain
