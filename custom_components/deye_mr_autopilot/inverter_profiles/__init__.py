@@ -1,0 +1,1 @@
+"""Strict inverter profile registry."""

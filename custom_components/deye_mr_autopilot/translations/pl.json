@@ -1,0 +1,103 @@
+{
+  "title": "Deye MR Autopilot",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Konfiguracja Deye MR Autopilot",
+        "description": "Skonfiguruj parametry instalacji. Sterowanie falownikiem nie jest dostępne w tej wersji.",
+        "data": {
+          "installation_name": "Nazwa instalacji",
+          "inverter_manufacturer": "Producent falownika",
+          "inverter_model": "Model falownika",
+          "inverter_nominal_power_w": "Moc znamionowa falownika",
+          "pv_peak_power_w": "Zainstalowana moc szczytowa PV",
+          "battery_nominal_capacity_kwh": "Nominalna pojemność baterii",
+          "battery_usable_capacity_kwh": "Użyteczna pojemność baterii (opcjonalnie)",
+          "battery_chemistry": "Chemia baterii (opcjonalnie)",
+          "maximum_charge_power_w": "Maksymalna moc ładowania baterii",
+          "maximum_discharge_power_w": "Maksymalna moc rozładowania baterii"
+        },
+        "sections": {
+          "soc_limits": {
+            "name": "Bezpieczne limity SOC baterii",
+            "description": "Limity są zależne od instalacji; pokazane wartości to ustawienia deweloperskie.",
+            "data": {
+              "emergency_soc": "Awaryjny SOC",
+              "minimum_soc": "Normalny minimalny SOC",
+              "recovery_soc": "SOC odzyskiwania",
+              "maximum_soc": "Maksymalny SOC"
+            }
+          }
+        }
+      },
+      "reconfigure": {
+        "title": "Ponowna konfiguracja instalacji",
+        "description": "Zmień parametry instalacji. Sterowanie fizyczne pozostaje wyłączone.",
+        "data": {
+          "installation_name": "Nazwa instalacji",
+          "inverter_manufacturer": "Producent falownika",
+          "inverter_model": "Model falownika",
+          "inverter_nominal_power_w": "Moc znamionowa falownika",
+          "pv_peak_power_w": "Zainstalowana moc szczytowa PV",
+          "battery_nominal_capacity_kwh": "Nominalna pojemność baterii",
+          "battery_usable_capacity_kwh": "Użyteczna pojemność baterii (opcjonalnie)",
+          "battery_chemistry": "Chemia baterii (opcjonalnie)",
+          "maximum_charge_power_w": "Maksymalna moc ładowania baterii",
+          "maximum_discharge_power_w": "Maksymalna moc rozładowania baterii"
+        },
+        "sections": {
+          "soc_limits": {
+            "name": "Bezpieczne limity SOC baterii",
+            "data": {
+              "emergency_soc": "Awaryjny SOC",
+              "minimum_soc": "Normalny minimalny SOC",
+              "recovery_soc": "SOC odzyskiwania",
+              "maximum_soc": "Maksymalny SOC"
+            }
+          }
+        }
+      }
+    },
+    "error": {"invalid_installation": "Parametry instalacji są niespójne. Sprawdź pojemności, limity mocy i kolejność limitów SOC."},
+    "abort": {
+      "already_configured": "Instalacja o tej nazwie jest już skonfigurowana.",
+      "reconfigure_successful": "Konfiguracja instalacji została zaktualizowana."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opcje Deye MR Autopilot",
+        "description": "MONITOR jest trybem domyślnym. Wybranie AUTOPILOT nie włącza sterowania fizycznego w tej wersji.",
+        "data": {
+          "operating_mode": "Tryb pracy",
+          "strategy": "Strategia",
+          "data_source_mode": "Tryb źródła danych",
+          "update_interval_seconds": "Interwał aktualizacji stanu"
+        }
+      }
+    }
+  },
+  "selector": {
+    "operating_mode": {"options": {"OFF": "Wyłączony", "MONITOR": "Monitorowanie", "RECOMMEND": "Rekomendacje", "SHADOW": "Tryb cienia", "AUTOPILOT": "Autopilot"}},
+    "strategy": {"options": {"SAFE": "Bezpieczna", "BALANCED": "Zrównoważona", "SELF_CONSUMPTION": "Autokonsumpcja", "PROFIT": "Zysk", "BACKUP": "Rezerwa", "CUSTOM": "Własna"}},
+    "data_source_mode": {"options": {"HOME_ASSISTANT": "Encje Home Assistant", "DIRECT_SOLARMAN": "Bezpośredni Solarman", "HYBRID": "Hybrydowy"}}
+  },
+  "entity": {
+    "sensor": {"status": {"name": "Stan"}, "safety_status": {"name": "Stan bezpieczeństwa"}},
+    "select": {
+      "autopilot_mode": {
+        "name": "Tryb Autopilota",
+        "state": {"OFF": "Wyłączony", "MONITOR": "Monitorowanie", "RECOMMEND": "Rekomendacje", "SHADOW": "Tryb cienia", "AUTOPILOT": "Autopilot"}
+      },
+      "strategy": {
+        "name": "Strategia",
+        "state": {"SAFE": "Bezpieczna", "BALANCED": "Zrównoważona", "SELF_CONSUMPTION": "Autokonsumpcja", "PROFIT": "Zysk", "BACKUP": "Rezerwa", "CUSTOM": "Własna"}
+      }
+    },
+    "switch": {"control_armed": {"name": "Sterowanie uzbrojone"}}
+  },
+  "issues": {
+    "control_blocked": {"title": "Sterowanie Autopilota zostało zablokowane", "description": "Sterowanie fizyczne dla wpisu {entry_id} zostało zablokowane przez system bezpieczeństwa."}
+  }
+}

@@ -1,0 +1,24 @@
+name: Feature request
+description: Propose a safe, Home Assistant-native improvement
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Energy-management use case
+      description: Describe the user outcome, not a raw register operation.
+    validations:
+      required: true
+  - type: textarea
+    id: safety
+    attributes:
+      label: Safety and failure behavior
+      description: Explain the safe fallback when data or dependencies fail.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: References or model-specific evidence
+

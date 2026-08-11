@@ -1,0 +1,105 @@
+{
+  "title": "Deye MR Autopilot",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Configure Deye MR Autopilot",
+        "description": "Configure installation limits. Physical inverter control is not available in this release.",
+        "data": {
+          "installation_name": "Installation name",
+          "inverter_manufacturer": "Inverter manufacturer",
+          "inverter_model": "Inverter model",
+          "inverter_nominal_power_w": "Nominal inverter power",
+          "pv_peak_power_w": "Installed PV peak power",
+          "battery_nominal_capacity_kwh": "Nominal battery capacity",
+          "battery_usable_capacity_kwh": "Usable battery capacity (optional)",
+          "battery_chemistry": "Battery chemistry (optional)",
+          "maximum_charge_power_w": "Maximum battery charge power",
+          "maximum_discharge_power_w": "Maximum battery discharge power"
+        },
+        "sections": {
+          "soc_limits": {
+            "name": "Battery SOC safety limits",
+            "description": "These are installation-specific limits; the displayed values are development defaults.",
+            "data": {
+              "emergency_soc": "Emergency SOC",
+              "minimum_soc": "Normal minimum SOC",
+              "recovery_soc": "Recovery SOC",
+              "maximum_soc": "Maximum SOC"
+            }
+          }
+        }
+      },
+      "reconfigure": {
+        "title": "Reconfigure installation",
+        "description": "Update installation limits. Existing physical control remains disabled.",
+        "data": {
+          "installation_name": "Installation name",
+          "inverter_manufacturer": "Inverter manufacturer",
+          "inverter_model": "Inverter model",
+          "inverter_nominal_power_w": "Nominal inverter power",
+          "pv_peak_power_w": "Installed PV peak power",
+          "battery_nominal_capacity_kwh": "Nominal battery capacity",
+          "battery_usable_capacity_kwh": "Usable battery capacity (optional)",
+          "battery_chemistry": "Battery chemistry (optional)",
+          "maximum_charge_power_w": "Maximum battery charge power",
+          "maximum_discharge_power_w": "Maximum battery discharge power"
+        },
+        "sections": {
+          "soc_limits": {
+            "name": "Battery SOC safety limits",
+            "data": {
+              "emergency_soc": "Emergency SOC",
+              "minimum_soc": "Normal minimum SOC",
+              "recovery_soc": "Recovery SOC",
+              "maximum_soc": "Maximum SOC"
+            }
+          }
+        }
+      }
+    },
+    "error": {
+      "invalid_installation": "The installation values are inconsistent. Check capacities, power limits, and the SOC limit order."
+    },
+    "abort": {
+      "already_configured": "An installation with this name is already configured.",
+      "reconfigure_successful": "The installation was reconfigured successfully."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Deye MR Autopilot options",
+        "description": "MONITOR is the safe default. Selecting AUTOPILOT does not enable physical control in this release.",
+        "data": {
+          "operating_mode": "Operating mode",
+          "strategy": "Strategy",
+          "data_source_mode": "Data source mode",
+          "update_interval_seconds": "Status update interval"
+        }
+      }
+    }
+  },
+  "selector": {
+    "operating_mode": {"options": {"OFF": "Off", "MONITOR": "Monitor", "RECOMMEND": "Recommend", "SHADOW": "Shadow", "AUTOPILOT": "Autopilot"}},
+    "strategy": {"options": {"SAFE": "Safe", "BALANCED": "Balanced", "SELF_CONSUMPTION": "Self-consumption", "PROFIT": "Profit", "BACKUP": "Backup", "CUSTOM": "Custom"}},
+    "data_source_mode": {"options": {"HOME_ASSISTANT": "Home Assistant entities", "DIRECT_SOLARMAN": "Direct Solarman", "HYBRID": "Hybrid"}}
+  },
+  "entity": {
+    "sensor": {"status": {"name": "Status"}, "safety_status": {"name": "Safety status"}},
+    "select": {
+      "autopilot_mode": {
+        "name": "Autopilot mode",
+        "state": {"OFF": "Off", "MONITOR": "Monitor", "RECOMMEND": "Recommend", "SHADOW": "Shadow", "AUTOPILOT": "Autopilot"}
+      },
+      "strategy": {
+        "name": "Strategy",
+        "state": {"SAFE": "Safe", "BALANCED": "Balanced", "SELF_CONSUMPTION": "Self-consumption", "PROFIT": "Profit", "BACKUP": "Backup", "CUSTOM": "Custom"}
+      }
+    },
+    "switch": {"control_armed": {"name": "Control armed"}}
+  },
+  "issues": {
+    "control_blocked": {"title": "Autopilot control was blocked", "description": "Physical control for config entry {entry_id} was blocked by the safety system."}
+  }
+}

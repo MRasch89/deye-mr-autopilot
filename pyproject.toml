@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = []
+
+[project]
+name = "deye-mr-autopilot"
+version = "0.1.0a1"
+description = "Local-first Home Assistant energy management for Deye hybrid installations"
+readme = "README.md"
+requires-python = ">=3.14.2"
+license = "Apache-2.0"
+dependencies = []
+
+[project.optional-dependencies]
+test = [
+  "homeassistant==2026.8.1",
+  "pytest>=8.3",
+  "pytest-asyncio>=0.25",
+  "pytest-cov>=6.0",
+  "pytest-homeassistant-custom-component>=0.13.300",
+  "ruff>=0.12",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+
+[tool.coverage.run]
+branch = true
+source = ["custom_components/deye_mr_autopilot"]
+
+[tool.ruff]
+target-version = "py314"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC", "RUF"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["custom_components.deye_mr_autopilot"]

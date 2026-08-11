@@ -1,0 +1,35 @@
+name: Release validation
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+      - name: Verify tag and manifest version
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          manifest = json.loads(Path("custom_components/deye_mr_autopilot/manifest.json").read_text())
+          expected = os.environ["RELEASE_TAG"].removeprefix("v")
+          if manifest["version"] != expected:
+              raise SystemExit(f"tag {expected!r} != manifest {manifest['version']!r}")
+          PY
+
