@@ -92,7 +92,9 @@ async def test_reconfigure_flow(hass, mock_config_entry, installation_data) -> N
     result = await hass.config_entries.flow.async_configure(
         result["flow_id"], _flow_input(installation_data)
     )
+    await hass.async_block_till_done()
     assert result["type"] is data_entry_flow.FlowResultType.ABORT
     assert result["reason"] == "reconfigure_successful"
     assert mock_config_entry.title == "Renamed Energy System"
     assert mock_config_entry.data["pv_peak_power_w"] == 8000
+    assert await hass.config_entries.async_unload(mock_config_entry.entry_id)
