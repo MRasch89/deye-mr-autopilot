@@ -81,20 +81,20 @@
     }
   },
   "selector": {
-    "operating_mode": {"options": {"OFF": "Off", "MONITOR": "Monitor", "RECOMMEND": "Recommend", "SHADOW": "Shadow", "AUTOPILOT": "Autopilot"}},
-    "strategy": {"options": {"SAFE": "Safe", "BALANCED": "Balanced", "SELF_CONSUMPTION": "Self-consumption", "PROFIT": "Profit", "BACKUP": "Backup", "CUSTOM": "Custom"}},
-    "data_source_mode": {"options": {"HOME_ASSISTANT": "Home Assistant entities", "DIRECT_SOLARMAN": "Direct Solarman", "HYBRID": "Hybrid"}}
+    "operating_mode": {"options": {"off": "Off", "monitor": "Monitor", "recommend": "Recommend", "shadow": "Shadow", "autopilot": "Autopilot"}},
+    "strategy": {"options": {"safe": "Safe", "balanced": "Balanced", "self_consumption": "Self-consumption", "profit": "Profit", "backup": "Backup", "custom": "Custom"}},
+    "data_source_mode": {"options": {"home_assistant": "Home Assistant entities", "direct_solarman": "Direct Solarman", "hybrid": "Hybrid"}}
   },
   "entity": {
     "sensor": {"status": {"name": "Status"}, "safety_status": {"name": "Safety status"}},
     "select": {
       "autopilot_mode": {
         "name": "Autopilot mode",
-        "state": {"OFF": "Off", "MONITOR": "Monitor", "RECOMMEND": "Recommend", "SHADOW": "Shadow", "AUTOPILOT": "Autopilot"}
+        "state": {"off": "Off", "monitor": "Monitor", "recommend": "Recommend", "shadow": "Shadow", "autopilot": "Autopilot"}
       },
       "strategy": {
         "name": "Strategy",
-        "state": {"SAFE": "Safe", "BALANCED": "Balanced", "SELF_CONSUMPTION": "Self-consumption", "PROFIT": "Profit", "BACKUP": "Backup", "CUSTOM": "Custom"}
+        "state": {"safe": "Safe", "balanced": "Balanced", "self_consumption": "Self-consumption", "profit": "Profit", "backup": "Backup", "custom": "Custom"}
       }
     },
     "switch": {"control_armed": {"name": "Control armed"}}

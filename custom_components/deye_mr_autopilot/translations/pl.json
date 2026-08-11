@@ -79,20 +79,20 @@
     }
   },
   "selector": {
-    "operating_mode": {"options": {"OFF": "Wyłączony", "MONITOR": "Monitorowanie", "RECOMMEND": "Rekomendacje", "SHADOW": "Tryb cienia", "AUTOPILOT": "Autopilot"}},
-    "strategy": {"options": {"SAFE": "Bezpieczna", "BALANCED": "Zrównoważona", "SELF_CONSUMPTION": "Autokonsumpcja", "PROFIT": "Zysk", "BACKUP": "Rezerwa", "CUSTOM": "Własna"}},
-    "data_source_mode": {"options": {"HOME_ASSISTANT": "Encje Home Assistant", "DIRECT_SOLARMAN": "Bezpośredni Solarman", "HYBRID": "Hybrydowy"}}
+    "operating_mode": {"options": {"off": "Wyłączony", "monitor": "Monitorowanie", "recommend": "Rekomendacje", "shadow": "Tryb cienia", "autopilot": "Autopilot"}},
+    "strategy": {"options": {"safe": "Bezpieczna", "balanced": "Zrównoważona", "self_consumption": "Autokonsumpcja", "profit": "Zysk", "backup": "Rezerwa", "custom": "Własna"}},
+    "data_source_mode": {"options": {"home_assistant": "Encje Home Assistant", "direct_solarman": "Bezpośredni Solarman", "hybrid": "Hybrydowy"}}
   },
   "entity": {
     "sensor": {"status": {"name": "Stan"}, "safety_status": {"name": "Stan bezpieczeństwa"}},
     "select": {
       "autopilot_mode": {
         "name": "Tryb Autopilota",
-        "state": {"OFF": "Wyłączony", "MONITOR": "Monitorowanie", "RECOMMEND": "Rekomendacje", "SHADOW": "Tryb cienia", "AUTOPILOT": "Autopilot"}
+        "state": {"off": "Wyłączony", "monitor": "Monitorowanie", "recommend": "Rekomendacje", "shadow": "Tryb cienia", "autopilot": "Autopilot"}
       },
       "strategy": {
         "name": "Strategia",
-        "state": {"SAFE": "Bezpieczna", "BALANCED": "Zrównoważona", "SELF_CONSUMPTION": "Autokonsumpcja", "PROFIT": "Zysk", "BACKUP": "Rezerwa", "CUSTOM": "Własna"}
+        "state": {"safe": "Bezpieczna", "balanced": "Zrównoważona", "self_consumption": "Autokonsumpcja", "profit": "Zysk", "backup": "Rezerwa", "custom": "Własna"}
       }
     },
     "switch": {"control_armed": {"name": "Sterowanie uzbrojone"}}

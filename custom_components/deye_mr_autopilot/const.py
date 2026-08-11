@@ -57,30 +57,30 @@ COORDINATOR_UPDATE_INTERVAL = timedelta(seconds=DEFAULT_UPDATE_INTERVAL)
 class OperatingMode(StrEnum):
     """Supported operating modes."""
 
-    OFF = "OFF"
-    MONITOR = "MONITOR"
-    RECOMMEND = "RECOMMEND"
-    SHADOW = "SHADOW"
-    AUTOPILOT = "AUTOPILOT"
+    OFF = "off"
+    MONITOR = "monitor"
+    RECOMMEND = "recommend"
+    SHADOW = "shadow"
+    AUTOPILOT = "autopilot"
 
 
 class Strategy(StrEnum):
     """Supported energy strategies."""
 
-    SAFE = "SAFE"
-    BALANCED = "BALANCED"
-    SELF_CONSUMPTION = "SELF_CONSUMPTION"
-    PROFIT = "PROFIT"
-    BACKUP = "BACKUP"
-    CUSTOM = "CUSTOM"
+    SAFE = "safe"
+    BALANCED = "balanced"
+    SELF_CONSUMPTION = "self_consumption"
+    PROFIT = "profit"
+    BACKUP = "backup"
+    CUSTOM = "custom"
 
 
 class DataSourceMode(StrEnum):
     """Supported data-source topologies."""
 
-    HOME_ASSISTANT = "HOME_ASSISTANT"
-    DIRECT_SOLARMAN = "DIRECT_SOLARMAN"
-    HYBRID = "HYBRID"
+    HOME_ASSISTANT = "home_assistant"
+    DIRECT_SOLARMAN = "direct_solarman"
+    HYBRID = "hybrid"
 
 
 DEFAULT_OPERATING_MODE = OperatingMode.MONITOR
