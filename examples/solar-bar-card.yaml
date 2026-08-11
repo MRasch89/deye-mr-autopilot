@@ -1,0 +1,48 @@
+type: custom:solar-bar-card
+inverter_size: 6
+
+# Live power from the read-only Solarman entities.
+production_entity: sensor.deye_inverter_pv_power
+self_consumption_entity: sensor.deye_inverter_load_power
+grid_power_entity: sensor.deye_inverter_grid_power
+invert_grid_power: true
+
+# This Deye profile reports positive battery power while discharging.
+battery_soc_entity: sensor.deye_inverter_battery
+battery_power_entity: sensor.deye_inverter_battery_power
+invert_battery_power: true
+battery_capacity: 16.5
+show_battery_indicator: true
+show_battery_flow: true
+battery_flow_animation_speed: 1.5
+
+# Daily energy totals.
+production_history_entity: sensor.deye_inverter_today_production
+consumption_history_entity: sensor.deye_inverter_today_load_consumption
+import_history_entity: sensor.deye_inverter_today_energy_import
+export_history_entity: sensor.deye_inverter_today_energy_export
+
+# Responsive modern presentation.
+color_palette: ocean-sunset
+show_header: true
+header_title: Deye MR — energia na żywo
+show_stats: true
+show_stats_detail: true
+stats_detail_position: inline
+show_net_indicator: true
+show_grid_icon_always: true
+show_bar_label: true
+show_bar_values: true
+show_legend: true
+show_legend_values: true
+power_unit: kW
+decimal_places: 2
+battery_soc_decimal_places: 0
+stats_border_radius: 16
+
+label_solar: PV
+label_usage: Dom
+label_import: Import
+label_export: Eksport
+label_battery: Bateria
+label_power_flow: Przepływ energii

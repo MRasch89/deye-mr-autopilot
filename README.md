@@ -50,6 +50,15 @@ Manual development installation is also possible by copying
 `custom_components/deye_mr_autopilot` into Home Assistant's `custom_components`
 directory and restarting Home Assistant.
 
+## Live energy-flow dashboard
+
+The repository includes a ready-to-paste
+[`Solar Bar Card` preset](examples/solar-bar-card.yaml) for the observed Deye/Solarman
+entities. It visualizes live PV, home, grid, and battery flows, battery SOC, and daily
+energy totals. The preset explicitly inverts the Deye grid and battery signs to match
+Solar Bar Card's direction conventions. Solar Bar Card is an optional HACS frontend
+dependency and is not installed or loaded by this integration.
+
 ## Configuration
 
 The GUI flow records the installation name, inverter identity and nominal power, PV
