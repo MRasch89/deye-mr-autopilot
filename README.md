@@ -1,6 +1,6 @@
 # Deye MR Autopilot
 
-[![Version](https://img.shields.io/badge/version-0.1.0--alpha.3-orange)](https://github.com/MRasch89/deye-mr-autopilot/releases)
+[![Version](https://img.shields.io/badge/version-0.1.0--alpha.4-orange)](https://github.com/MRasch89/deye-mr-autopilot/releases)
 [![Home Assistant](https://img.shields.io/badge/Home%20Assistant-2026.8%2B-41BDF5)](https://www.home-assistant.io/)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 

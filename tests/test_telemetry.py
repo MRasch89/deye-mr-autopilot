@@ -1,5 +1,7 @@
 """Tests for the read-only Home Assistant telemetry collector."""
 
+from homeassistant.util import dt as dt_util
+
 from custom_components.deye_mr_autopilot.telemetry import (
     BATTERY_ALARM_ENTITY,
     BATTERY_FAULT_ENTITY,
@@ -77,3 +79,32 @@ async def test_collector_rejects_unit_mismatch_and_disconnection(hass) -> None:
     assert snapshot.pv_power_w is None
     assert pv_spec.entity_id in snapshot.invalid_entities
     assert snapshot.connected is False
+
+
+async def test_unchanged_but_recently_reported_state_is_fresh(hass) -> None:
+    _set_complete_source_data(hass)
+    pv_spec = SOURCE_SPECS["pv_power_w"]
+    now_timestamp = dt_util.utcnow().timestamp()
+    attributes = {"unit_of_measurement": pv_spec.expected_unit}
+    hass.states.async_set(
+        pv_spec.entity_id,
+        "0",
+        attributes,
+        timestamp=now_timestamp - 600,
+    )
+    hass.states.async_set(
+        pv_spec.entity_id,
+        "0",
+        attributes,
+        timestamp=now_timestamp,
+    )
+    pv_state = hass.states.get(pv_spec.entity_id)
+
+    snapshot = await HomeAssistantTelemetryCollector(
+        hass, stale_after_seconds=120
+    ).async_collect()
+
+    assert pv_state.last_updated < pv_state.last_reported
+    assert snapshot.quality is TelemetryQuality.VALID
+    assert snapshot.source_age_seconds is not None
+    assert snapshot.source_age_seconds < 5

@@ -145,7 +145,7 @@ class HomeAssistantTelemetryCollector:
                 continue
             if spec.essential:
                 essential_ages.append(
-                    max(0.0, (now - state.last_updated).total_seconds())
+                    max(0.0, (now - state.last_reported).total_seconds())
                 )
 
         binary_states = {
